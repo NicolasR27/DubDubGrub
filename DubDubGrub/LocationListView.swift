@@ -9,10 +9,36 @@ import SwiftUI
 
 struct LocationListView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                ForEach(0..<10) { item in
+                    NavigationLink(destination:LocationDetailView()){
+                        locationCell()
+                    }
+
+                }
+                .navigationTitle("Grub Spots")
+            }
+
+        }
+
     }
+
 }
 
 #Preview {
     LocationListView()
+}
+
+struct AvatarView: View {
+
+    var size: CGFloat
+
+    var body: some View {
+        Image("default-avatar")
+            .resizable()
+            .scaledToFit()
+            .frame(width: size,height: size)
+            .clipShape(Circle())
+    }
 }
