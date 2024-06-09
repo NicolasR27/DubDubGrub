@@ -17,25 +17,16 @@ struct LocationDetailView: View {
     var body: some View {
 
             VStack(spacing: 16) {
-                Image("default-banner-asset")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 120)
+                BannerImageView(imageName: "default-banner-asset")
 
                 HStack {
-                    Label("123 Main Street",systemImage: "mappin.and.ellipse")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                       
+                    AddressView(address:"123 Main Street")
+
                     Spacer()
                 }
                 .padding(.horizontal)
 
-                Text("This is test description this is test description this is test description his is test description")
-                    .lineLimit(3)
-                    .minimumScaleFactor(7.5)
-                    .frame(height:70)
-                    .padding(.horizontal)
+                DescriptionView(text:"This is test description this is test description this is test description his is test description")
 
                 ZStack {
                     Capsule()
@@ -47,7 +38,6 @@ struct LocationDetailView: View {
 
                         } label: {
                             LocationActionButton(color: .mint, imageName: "location.fill")
-
 
                         }
 
@@ -102,7 +92,6 @@ struct LocationDetailView: View {
         LocationDetailView()
 
     }
-    
 }
 
 struct LocationActionButton: View {
@@ -140,34 +129,39 @@ struct firstNameAvatarView: View{
     }
 }
 
-struct locationCell: View {
+
+
+struct BannerImageView: View {
+    var imageName: String
 
     var body: some View {
+        Image(imageName)
+            .resizable()
+            .scaledToFill()
+            .frame(height: 120)
+    }
+}
 
-        HStack {
-            Image("default-square-asset")
-                .resizable()
-                .scaledToFit()
-                .frame(width:80,height: 80)
-                .clipShape(Circle())
-                .padding(.vertical,8)
+struct AddressView: View {
 
-            VStack(alignment:.leading) {
-                Text("Test Location Name")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .lineLimit(1)
+    var address: String
 
-                HStack {
-                    AvatarView(size: 35)
-                    AvatarView(size: 35)
-                    AvatarView(size: 35)
-                    AvatarView(size: 35)
+    var body: some View {
+        Label(address,systemImage: "mappin.and.ellipse")
+            .font(.caption)
+            .foregroundColor(.secondary)
+    }
+}
 
-                }
+struct DescriptionView: View {
+   
+    var text: String
 
-            }
-            .padding(.leading)
-        }
+    var body: some View {
+        Text(text)
+            .lineLimit(3)
+            .minimumScaleFactor(7.5)
+            .frame(height:70)
+            .padding(.horizontal)
     }
 }

@@ -13,32 +13,17 @@ struct LocationListView: View {
             List {
                 ForEach(0..<10) { item in
                     NavigationLink(destination:LocationDetailView()){
-                        locationCell()
+                        LocationCell()
                     }
-
                 }
                 .navigationTitle("Grub Spots")
             }
-
         }
-
     }
-
+    
 }
 
 #Preview {
     LocationListView()
 }
 
-struct AvatarView: View {
-
-    var size: CGFloat
-
-    var body: some View {
-        Image("default-avatar")
-            .resizable()
-            .scaledToFit()
-            .frame(width: size,height: size)
-            .clipShape(Circle())
-    }
-}

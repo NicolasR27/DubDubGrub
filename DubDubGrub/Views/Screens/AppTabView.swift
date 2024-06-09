@@ -18,9 +18,12 @@ struct AppTabView: View {
                 .tabItem {
                     Label("Locations",systemImage:"building")
                 }
-            ProfileView()
-                .tabItem {
-                    Label("Profile",systemImage:"person")
+            NavigationStack{
+                ProfileView()
+                }
+             .tabItem {
+                Label("Profile",systemImage:"person")
+
                 }
         }
         .accentColor(.black)
